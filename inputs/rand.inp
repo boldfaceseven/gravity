@@ -1,0 +1,9 @@
+{
+  int NBOD = 100;
+  int SCALE = 2.5;
+
+  fillVec(&p,1       ,4.654E-4,0    ,0,0,0       );
+  for(int i = 0; i < NBOD; i++){
+    fillVec(&p,randV(1E-7,9E-6,false),randV(1E-5,9E-5,false),randV(0,SCALE,true),randV(0,SCALE,true),randV(1E-8,3E-7,true),randV(1E-8,3E-7,true));
+  }
+}

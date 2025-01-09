@@ -56,6 +56,7 @@ class Body{
   void gravity(Body *);
   vec2 readState();
   float readRad();
+  void printBody();
   Body();
   /*Body(unsigned int, unsigned int);
   Body(unsigned int, unsigned int, vec2);*/

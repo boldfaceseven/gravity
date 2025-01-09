@@ -1,0 +1,76 @@
+<MasterConfig>
+  <TimeStep Value = "3600.0"/>
+  <Scale Value = "100"/>
+
+  <!--Sun-->
+  <Body Instance = "0">
+    <Mass Value = "1"/>
+    <Radius Value = "4.654E-4"/>
+    <IPos Value = "(0, 0)"/>
+    <IVel Value = "(0, 0)"/>
+  </Body>
+
+  <!--Mercury-->
+  <Body Instance = "1">
+    <Mass Value = "1.659E-7"/>
+    <Radius Value = "1.630E-5"/>
+    <IPos Value = "(0.387, 0)"/>
+    <IVel Value = "(0, 3.168E-7)"/>
+  </Body>
+
+  <!--Venus-->
+  <Body Instance = "2">
+    <Mass Value = "2.448E-6"/>
+    <Radius Value = "4.050E-5"/>
+    <IPos Value = "(0.723, 0)"/>
+    <IVel Value = "(0, 2.340E-7)"/>
+  </Body>
+
+  <!--Earth-->
+  <Body Instance = "3">
+    <Mass Value = "3.002E-6"/>
+    <Radius Value = "4.260E-5"/>
+    <IPos Value = "(1.000, 0)"/>
+    <IVel Value = "(0, 1.992E-7)"/>
+  </Body>
+
+  <!--Mars-->
+  <Body Instance = "4">
+    <Mass Value = "3.228E-7"/>
+    <Radius Value = "2.270E-5"/>
+    <IPos Value = "(1.524, 0)"/>
+    <IVel Value = "(0, 1.611E-7)"/>
+  </Body>
+
+  <!--Jupiter-->
+  <Body Instance = "5">
+    <Mass Value = "9.542E-4"/>
+    <Radius Value = "4.779E-4"/>
+    <IPos Value = "(5.204, 0)"/>
+    <IVel Value = "(0, 8.757E-8)"/>
+  </Body>
+
+  <!--Saturn-->
+  <Body Instance = "6">
+    <Mass Value = "2.856E-4"/>
+    <Radius Value = "4.029E-4"/>
+    <IPos Value = "(9.573, 0)"/>
+    <IVel Value = "(0, 6.484E-8)"/>
+  </Body>
+
+  <!--Uranus-->
+  <Body Instance = "7">
+    <Mass Value = "4.364E-5"/>
+    <Radius Value = "1.708E-4"/>
+    <IPos Value = "(19.165, 0)"/>
+    <IVel Value = "(0, 4.546E-8)"/>
+  </Body>
+
+  <!--Neptune-->
+  <Body Instance = "8">
+    <Mass Value = "5.128E-5"/>
+    <Radius Value = "1.655E-4"/>
+    <IPos Value = "(30.180, 0)"/>
+    <IVel Value = "(0, 3.610E-8)"/>
+  </Body>
+</MasterConfig>

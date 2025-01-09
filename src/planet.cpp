@@ -30,7 +30,7 @@ void Body::compState(Body *bTwo){\
 }
 
 bool Body::exist(){
-  return this->mass != 0;
+  return mass != 0;
 }
 
 vec2 Body::readState(){
@@ -39,6 +39,13 @@ vec2 Body::readState(){
 
 float Body::readRad(){
   return radius;
+}
+
+void Body::printBody(){
+  std::cout << "Mass: " << mass << '\n';
+  std::cout << "Radius: " << radius << '\n';
+  std::cout << "Position: (" << r.x << "," << r.y << ")\n";
+  std::cout << "Velocity: (" << rd.x << "," << rd.y << ")\n";
 }
 
 /*

@@ -1,15 +1,16 @@
 <MasterConfig>
-  <RNG seed="NULL"/>
-  <Body Instance = "1">
-    <Mass Value="1"/>
-    <Radius Value="1"/>
-    <IPos x="1" y="1"/>
-    <IVel x="1" y="1"/>
+  <TimeStep Value="3600.0"/>
+  <RNG Seed="NULL"/>
+  <Body Instance = "0">
+    <Mass   Value="1"/>
+    <Radius Value="2"/>
+    <IPos   Value="(3,4)"/>
+    <IVel   Value="(5,6)"/>
   </Body>
-  <Body Instance = "2-5">
-    <Mass Value="rand" Min=".1" Max=".2"/>
-    <Radius Value="rand" Min=".03" Max=".04"/>
-    <IPos x="rand" y="rand" Min="0" Max="1"/>
-    <IVel x="rand" y="rand" Min="1e-7" Max="1e-8"/>
+  <Body Instance = "1-4">
+    <Mass   Value="rand" Min=".1"   Max=".2"/>
+    <Radius Value="rand" Min=".03"  Max=".04"/>
+    <IPos   Value="rand" Min="0"    Max="1"/>
+    <IVel   Value="rand" Min="1e-7" Max="1e-8"/>
   </Body>
 </MasterConfig>

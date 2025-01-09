@@ -12,7 +12,7 @@ XOBJ := $(XSRC:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
 PLEXE := $(BIN_DIR)/utPlanet
 PLXOBJ := $(OBJ_DIR)/utPlanet.o  $(OBJ_DIR)/planet.o
 XMEXE := $(BIN_DIR)/utXML
-XMXOBJ := $(OBJ_DIR)/utXML.o
+XMXOBJ := $(OBJ_DIR)/utXML.o $(OBJ_DIR)/xml.o $(OBJ_DIR)/planet.o
 
 CXXFLAGS := -Iinclude -Iinputs
 LDLIBS = -lglfw3

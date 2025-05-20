@@ -7,6 +7,6 @@
 
 extern float dt;
 
-void parseXML(std::vector<Body>*, std::string);
+void parseXML(std::vector<Body>*, char[]);
 
 #endif

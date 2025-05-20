@@ -14,8 +14,8 @@ PLXOBJ := $(OBJ_DIR)/utPlanet.o  $(OBJ_DIR)/planet.o
 XMEXE := $(BIN_DIR)/utXML
 XMXOBJ := $(OBJ_DIR)/utXML.o $(OBJ_DIR)/xml.o $(OBJ_DIR)/planet.o
 
-CXXFLAGS := -Iinclude -Iinputs
-LDLIBS = -lglfw3
+CXXFLAGS := -Iinclude -Idep
+LDLIBS = -lglfw3 -ldl -lpthread
 
 .phony: all clean fresh release test
 

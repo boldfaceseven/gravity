@@ -3,6 +3,7 @@
 #include <vector>
 #include <cstdlib>
 #include <chrono>
+#include <fstream>
 
 #include "glad/glad.h"
 #include <GLFW/glfw3.h>
@@ -12,6 +13,7 @@
 #include "planet.h"
 #include "xml.h"
 
+int usrErr(int, char**);
 float randP();
 float randV(float,float,bool);
 uint64_t timeMill();
@@ -36,6 +38,9 @@ int main(int argc, char** argv){
   uint64_t propTime = 0;
   uint64_t frameTime = 0;
   unsigned int prftim = 0;
+
+  if(int err = usrErr(argc, argv)) //Error check user input
+    return err;
   
   cZoom = 2.5;
   parseXML(&p, argv[1]);
@@ -104,6 +109,21 @@ int main(int argc, char** argv){
   Circle_DeInit(&Circle);
   glfwTerminate();
   return 0;
+}
+
+int usrErr(int argc, char** argv){
+  if(argc != 2){
+    std::cout << "Error: No input file provided\n";
+    return 1;
+  }
+  if (FILE *file = fopen(argv[1], "r")) {
+    fclose(file);
+    return 0;
+  }
+  else {
+    std::cout << "Error: Input file not accesable/does not exist\n";
+    return 2;
+  }   
 }
 
 float randP(){

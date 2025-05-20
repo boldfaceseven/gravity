@@ -15,7 +15,7 @@ void parseBody(std::vector<Body>*, rapidxml::xml_node<>*);
 extern uint64_t timeMill();
 extern float pScale;
 
-void parseXML(std::vector<Body> *sys, std::string filename){  
+void parseXML(std::vector<Body> *sys, char filename[]){  
   rapidxml::xml_document<> doc;
   rapidxml::xml_node<> *root; // Root node
   rapidxml::xml_node<> *node; // Node currently being processed

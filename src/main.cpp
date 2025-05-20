@@ -117,13 +117,23 @@ int main(int argc, char** argv){
 int usrErr(int argc, char** argv, std::string *fName){
   for(int i = 1; i < argc; i++){
     if(!strcmp(argv[i],"-h")){
-      std::cout << "HELP";
+      std::cout << "Gravity: Simple OpenGL-based 2d gravity simulation\n";
+      std::cout << "Usage: " << argv[0] << " <inputFile>\n";
+      std::cout << "\n";
+      std::cout << "Arguments:\n";
+      std::cout << "  <inputFile>  XML file containing simulation parameters and\n";
+      std::cout << "               required orbital body information\n";
+      std::cout << "\n";
+      std::cout << "Options:\n";
+      std::cout << "  -h\tPrints this help text and exits\n";
+      std::cout << "\n";
+      *fName == "";
+      break;
     }
     else if(*fName == ""){
       if (FILE *file = fopen(argv[i], "r")) {
 	fclose(file);
 	*fName = argv[1];
-	return 0;
       }
       else {
 	std::cout << "Error: Input file not accesable/does not exist\n";
@@ -135,7 +145,12 @@ int usrErr(int argc, char** argv, std::string *fName){
       return 3;
     }
   }
-  return 4;
+  if(*fName != ""){
+    return 0;
+  }
+  else{
+    return 1;
+  }
 }
 
 float randP(){

@@ -4,6 +4,8 @@
 #include <cstdlib>
 #include <chrono>
 #include <fstream>
+#include <string>
+#include <cstring>
 
 #include "glad/glad.h"
 #include <GLFW/glfw3.h>
@@ -13,7 +15,7 @@
 #include "planet.h"
 #include "xml.h"
 
-int usrErr(int, char**);
+int usrErr(int, char**, std::string*);
 float randP();
 float randV(float,float,bool);
 uint64_t timeMill();
@@ -30,6 +32,7 @@ int main(int argc, char** argv){
   GL_Circle Circle = Circle_Struct_Init();
   int failed;
   
+  std::string fName;
   std::vector<Body> p;
   Body vecTemp; //Camera Zoom centered on Origin
   const unsigned int fRate = 30;
@@ -38,12 +41,12 @@ int main(int argc, char** argv){
   uint64_t propTime = 0;
   uint64_t frameTime = 0;
   unsigned int prftim = 0;
-
-  if(int err = usrErr(argc, argv)) //Error check user input
+  
+  if(int err = usrErr(argc, argv, &fName)) //Error check user input and extract needed arguments
     return err;
   
   cZoom = 2.5;
-  parseXML(&p, argv[1]);
+  parseXML(&p, fName);
 
   failed = Init(&window);
   if(failed)
@@ -111,19 +114,28 @@ int main(int argc, char** argv){
   return 0;
 }
 
-int usrErr(int argc, char** argv){
-  if(argc != 2){
-    std::cout << "Error: No input file provided\n";
-    return 1;
+int usrErr(int argc, char** argv, std::string *fName){
+  for(int i = 1; i < argc; i++){
+    if(!strcmp(argv[i],"-h")){
+      std::cout << "HELP";
+    }
+    else if(*fName == ""){
+      if (FILE *file = fopen(argv[i], "r")) {
+	fclose(file);
+	*fName = argv[1];
+	return 0;
+      }
+      else {
+	std::cout << "Error: Input file not accesable/does not exist\n";
+	return 2;
+      }
+    }
+    else{
+      std::cout << "Error: Multiple input files given\n";
+      return 3;
+    }
   }
-  if (FILE *file = fopen(argv[1], "r")) {
-    fclose(file);
-    return 0;
-  }
-  else {
-    std::cout << "Error: Input file not accesable/does not exist\n";
-    return 2;
-  }   
+  return 4;
 }
 
 float randP(){

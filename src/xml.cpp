@@ -15,7 +15,7 @@ void parseBody(std::vector<Body>*, rapidxml::xml_node<>*);
 extern uint64_t timeMill();
 extern float pScale;
 
-void parseXML(std::vector<Body> *sys, char filename[]){  
+void parseXML(std::vector<Body> *sys, std::string filename){  
   rapidxml::xml_document<> doc;
   rapidxml::xml_node<> *root; // Root node
   rapidxml::xml_node<> *node; // Node currently being processed
@@ -23,7 +23,7 @@ void parseXML(std::vector<Body> *sys, char filename[]){
   std::ifstream file;
   
   // Read the xml file, parse the tree, and set the root node
-  file.open(filename);
+  file.open(filename.c_str());
   std::vector<char> buffer((std::istreambuf_iterator<char>(file)), std::istreambuf_iterator<char>());
   for(int i = 0; i < buffer.size(); i++){buffer[i] = tolower(buffer[i]);} // Convert all file contents to lowercase
   buffer.push_back('\0');

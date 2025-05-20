@@ -23,7 +23,7 @@ void parseXML(std::vector<Body> *sys, std::string filename){
   std::ifstream file;
   
   // Read the xml file, parse the tree, and set the root node
-  file.open(filename);
+  file.open(filename.c_str());
   std::vector<char> buffer((std::istreambuf_iterator<char>(file)), std::istreambuf_iterator<char>());
   for(int i = 0; i < buffer.size(); i++){buffer[i] = tolower(buffer[i]);} // Convert all file contents to lowercase
   buffer.push_back('\0');

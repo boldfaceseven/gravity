@@ -3,9 +3,7 @@
 
 #include "circle.h"
 
-#include <iostream>
-
-GL_Circle Circle_Struct_Init(){\
+GL_Circle Circle_Struct_Init(){
   GL_Circle c;
   float temp1[12*3] = {
     1.000f,  0.000f,  0.000f,

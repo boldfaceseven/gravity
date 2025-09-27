@@ -6,7 +6,7 @@ BIN_DIR := bin
 EXE := $(BIN_DIR)/GL
 CSRC := $(wildcard $(SRC_DIR)/*.c)
 XSRC := $(wildcard $(SRC_DIR)/*.cpp)
-COBJ := $(CSRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
+COBJ := $(CSRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o) $(OBJ_DIR)/glad.o
 XOBJ := $(XSRC:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
 
 PLEXE := $(BIN_DIR)/utPlanet
@@ -15,15 +15,15 @@ XMEXE := $(BIN_DIR)/utXML
 XMXOBJ := $(OBJ_DIR)/utXML.o $(OBJ_DIR)/xml.o $(OBJ_DIR)/planet.o
 
 CXXFLAGS := -Iinclude -Idep
-LDLIBS = -lglfw3 -ldl -lpthread
+LDLIBS = -lglfw -ldl -lpthread
 
-.phony: all clean fresh release test
+
+
+.phony: all clean release test
 
 release: $(EXE)
 
 test: $(PLEXE) $(XMEXE)
-
-fresh: clean all
 
 all: $(EXE) $(TEXE)
 
@@ -39,6 +39,9 @@ $(PLEXE): $(PLXOBJ) | $(BIN_DIR)
 $(XMEXE): $(XMXOBJ) | $(BIN_DIR)
 	@$(CXX) $^ $(LDLIBS) -g -pg -o $@
 
+$(OBJ_DIR)/glad.o: dep/glad/glad.c | $(OBJ_DIR)
+	@$(CXX) $(CXXFLAGS) -g -pg -c $< -o $@
+
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c* | $(OBJ_DIR)
 	@$(CXX) $(CXXFLAGS) -g -pg -c $< -o $@
 
@@ -47,7 +50,3 @@ $(OBJ_DIR)/%.o: $(TST_DIR)/%.c* | $(OBJ_DIR)
 
 $(BIN_DIR) $(OBJ_DIR):
 	@mkdir -p $@
-
-makefile: ;
-
--include $(OBJ:.o=.d)

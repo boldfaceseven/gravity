@@ -86,7 +86,7 @@ int main(int argc, char** argv){
       }
     }
 
-    // Draw a frame every 1/fRate seconds 
+    // Draw a frame every 1/fRate seconds
     if(timeMill()-frameTime > 1000/fRate){
       frameTime = timeMill();
       glfwGetWindowSize(window, &winW, &winH);
@@ -115,8 +115,10 @@ int main(int argc, char** argv){
 }
 
 int usrErr(int argc, char** argv, std::string *fName){
-  for(int i = 1; i < argc; i++){
-    if(!strcmp(argv[i],"-h")){
+  for(int i = 0; i < argc; i++){
+    if(!strcmp(argv[i],"-h") || argc == 1){
+      std::cout << "Error: No Aruments Given\n";
+      std::cout << "\n";
       std::cout << "Gravity: Simple OpenGL-based 2d gravity simulation\n";
       std::cout << "Usage: " << argv[0] << " <inputFile>\n";
       std::cout << "\n";
@@ -130,7 +132,7 @@ int usrErr(int argc, char** argv, std::string *fName){
       *fName == "";
       break;
     }
-    else if(*fName == ""){
+    else if(*fName == "" && i == 1){
       if (FILE *file = fopen(argv[i], "r")) {
 	fclose(file);
 	*fName = argv[1];
@@ -155,7 +157,7 @@ int usrErr(int argc, char** argv, std::string *fName){
 
 float randP(){
   return (rand()%1000)/1000.0;
-}
+ }
 
 float randV(float minV, float maxV, bool rNeg){
   if(rNeg){
